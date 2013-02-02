@@ -1,0 +1,30 @@
+var assert = require('assert');
+module.exports = function(grunt) {
+  grunt.registerTask('fail', 'Causes an assertion failure', function() {
+    var done = this.async();
+    setTimeout(function() {
+      assert(false, 'broken');
+    }, 0);
+  });
+
+  grunt.registerTask('okay', 'Pass through', function() {
+    var done = this.async();
+    setTimeout(function() {
+      done();
+    }, 0);
+  });
+
+  require('../../tasks/mocha-hack.js')(grunt);
+
+  grunt.initConfig({
+    'mocha-hack': {
+      options: {
+        // useColors: true,
+        timeout: 1000,
+        reporter: 'TAP'
+      },
+      one: ['../../test/fixtures/mocha_1.js'],
+      two: ['../../test/fixtures/mocha_2.js']
+    }
+  });
+};

@@ -1,0 +1,38 @@
+{
+  "name": "grunt-mocha-hack",
+  "description": "A hacky wrapper to run node.js lib Mocha tests via grunt.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gregrperkins/grunt-mocha-hack",
+  "forkedFrom": "http://github.com/yaymukund/grunt-simple-mocha",
+
+  "contributors": [{
+    "name": "Greg Perkins",
+    "email": "gperkins@gmail.com",
+    "url": "http://github.com/gregrperkins"
+  }, {
+    "name": "Mukund Lakshman",
+    "email": "yaymukund@gmail.com",
+    "url": "http://yaymukund.com"
+  }],
+
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/grunt test"
+  },
+  "dependencies": {
+    "mocha": "*"
+  },
+  "main": "lib/mocha-hack.js",
+  "devDependencies": {
+    "grunt": "0.4.0rc4",
+    "grunt-cli": "~0.1.6",
+    "grunt-contrib-nodeunit": "~0.1.0"
+  },
+  "keywords": [
+    "gruntplugin",
+    "mocha",
+    "test"
+  ]
+}
