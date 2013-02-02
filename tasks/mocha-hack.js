@@ -8,8 +8,9 @@ var mochaReporterBase = require('mocha/lib/reporters/base');
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('mocha-hack', 'Run tests with mocha', function() {
+    // TODO(gregp): remove this.file.src once 0.4.0rc4 and earlier deprecate
+    var paths = (this.filesSrc || this.file.src).map(path.resolve);
     // Retrieve options from the grunt task.
-    var paths = this.file.src.map(path.resolve);
     var options = this.options();
     var gruntDone = this.async();
 
