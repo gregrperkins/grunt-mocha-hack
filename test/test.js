@@ -40,8 +40,9 @@ exports['grunt-mocha-hack'] = {
       grunt: true,
       args: ['--gruntfile', gruntfileFixture, 'mocha-hack:one'],
     }, function(err, result, code) {
-      test.ok(/# tests 3/.test(result.stdout));
-      test.ok(/# fail 0/.test(result.stdout));
+      console.log(result.stdout);
+      test.ok(/# tests 3/.test(result.stdout), 'should have run 3 tests');
+      test.ok(/# fail 0/.test(result.stdout), 'should have failed 0 tests');
       test.equal(code, 0, 'should have no error code');
       test.done();
     });
@@ -54,9 +55,9 @@ exports['grunt-mocha-hack'] = {
       grunt: true,
       args: ['--gruntfile', gruntfileFixture, 'mocha-hack:two'],
     }, function(err, result, code) {
-      // console.log(result.stdout);
-      test.ok(/# tests 3/.test(result.stdout));
-      test.ok(/# fail 3/.test(result.stdout));
+      console.log(result.stdout);
+      test.ok(/# tests 3/.test(result.stdout), 'should have run 3 tests');
+      test.ok(/# fail 3/.test(result.stdout), 'should have failed 3 tests');
       test.equal(code, 3, 'should have error code - task failure');
       test.done();
     });
