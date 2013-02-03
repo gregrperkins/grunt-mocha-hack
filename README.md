@@ -1,3 +1,5 @@
+[![build status](https://secure.travis-ci.org/gregrperkins/grunt-mocha-hack.png)](http://travis-ci.org/gregrperkins/grunt-mocha-hack)
+
 # grunt-mocha-hack
 
 Forked version of
