@@ -29,6 +29,7 @@
     "grunt": "0.4.0rc7",
     "grunt-cli": "~0.1.6",
     "grunt-contrib-nodeunit": "~0.1.0",
+    "should": "~1.2.1",
     "tap": "~0.4.0"
   },
   "keywords": [

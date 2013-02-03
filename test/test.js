@@ -2,6 +2,7 @@
 
 var spawn = require('child_process').spawn;
 var path = require('path');
+var should = require('should');
 
 var grunt = require('grunt');
 var gruntfileFixture = path.join('test', 'fixtures', 'Gruntfile.js');
@@ -24,51 +25,46 @@ var gruntSpawn = function(task, cb) {
   });
 };
 
-
-exports['grunt'] = {
+describe('grunt', function() {
   // Just testing that subprocessing grunt works
-  'can spawn properly': function(test) {
-    test.expect(1);
-    gruntSpawn('okay', function(stdout, code) {
-      test.equal(code, 0, 'should have no error code');
-      test.done();
+  it('can spawn properly', function (done) {
+    gruntSpawn('okay', function (stdout, code) {
+      code.should.eql(0, 'should have no error code');
+      done();
     });
-  },
+  });
   // Show that we get errors when we throw stuff
-  'returns errors to calling process': function(test) {
-    test.expect(2);
-    gruntSpawn('fail', function(stdout, code) {
-      test.notEqual(code, 0, 'should return error code on assertion failure');
+  it('returns errors to calling process', function (done) {
+    gruntSpawn('fail', function (stdout, code) {
+      code.should.not.eql(0, 'should return error code on assertion failure');
       var outHasFail = /Fatal error: broken/.test(stdout);
-      test.ok(outHasFail, 'stdout should contain output indicating failure.');
-      test.done();
+      should.ok(outHasFail, 'stdout should contain output indicating failure.');
+      done();
     });
-  }
-};
+  });
+});
 
-exports['grunt-mocha-hack'] = {
+describe('grunt-mocha-hack', function() {
   // Show that we can spawn the grunt-mocha-hack and get success
-  'can spawn properly': function(test) {
-    test.expect(3);
-    gruntSpawn('mocha-hack:one', function(stdout, code) {
+  it('can spawn properly', function (done) {
+    gruntSpawn('mocha-hack:one', function (stdout, code) {
       // console.log(stdout);
-      test.ok(/# tests 3/.test(stdout), 'should have run 3 tests');
-      test.ok(/# fail 0/.test(stdout), 'should have failed 0 tests');
-      test.equal(code, 0, 'should have no error code');
-      test.done();
+      should.ok(/# tests 3/.test(stdout), 'should have run 3 tests');
+      should.ok(/# fail 0/.test(stdout), 'should have failed 0 tests');
+      code.should.eql(0, 'should have no error code');
+      done();
     });
-  },
+  });
   // Show that our errors do not cause mocha/grunt to quit abruptly.
   // Instead, we should get a complete and meaningful printout.
-  'gets errors properly': function(test) {
-    test.expect(3);
-    gruntSpawn('mocha-hack:two', function(stdout, code) {
+  it('gets errors properly', function (done) {
+    gruntSpawn('mocha-hack:two', function (stdout, code) {
       // console.log(stdout);
-      test.ok(/# tests 3/.test(stdout), 'should have run 3 tests');
-      test.ok(/# fail 3/.test(stdout), 'should have failed 3 tests');
-      test.equal(code, 3, 'should have error code - task failure');
-      test.done();
+      should.ok(/# tests 3/.test(stdout), 'should have run 3 tests');
+      should.ok(/# fail 3/.test(stdout), 'should have failed 3 tests');
+      code.should.eql(3, 'should have error code - task failure');
+      done();
     });
-  }
+  });
   // TODO(gregp): test useColor flag?
-};
+});

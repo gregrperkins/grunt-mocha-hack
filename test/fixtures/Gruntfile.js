@@ -20,8 +20,8 @@ module.exports = function(grunt) {
     'mocha-hack': {
       options: {
         // useColors: true,
-        timeout: 1000,
-        reporter: 'TAP'
+        timeout: Infinity,
+        reporter: 'tap'
       },
       one: ['../../test/fixtures/mocha_1.js'],
       two: ['../../test/fixtures/mocha_2.js']
