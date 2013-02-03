@@ -1,7 +1,7 @@
 {
   "name": "grunt-mocha-hack",
   "description": "A hacky wrapper to run node.js lib Mocha tests via grunt.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/gregrperkins/grunt-mocha-hack",
   "forkedFrom": "http://github.com/yaymukund/grunt-simple-mocha",
 
@@ -26,7 +26,7 @@
   },
   "main": "lib/mocha-hack.js",
   "devDependencies": {
-    "grunt": "0.4.0rc4",
+    "grunt": "0.4.0rc7",
     "grunt-cli": "~0.1.6",
     "grunt-contrib-nodeunit": "~0.1.0"
   },
