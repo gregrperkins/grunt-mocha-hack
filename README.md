@@ -13,6 +13,34 @@ But Mocha really likes letting ``uncaughtException``s run free.
 
 ![Imgur](http://i.imgur.com/1Q09mCj.png)
 
+## Converting from grunt-simple-mocha
+
+```javascript
+// package.json
+
+"grunt-simple-mocha": "~0.x.x"
+// -- to --
+"grunt-mocha-hack": "~0.1.0"
+```
+
+```javascript
+// grunt.js or Gruntfile.js
+
+simplemocha: {
+  // ... 
+}
+// -- to --
+'mocha-hack': {
+  // ...
+}
+
+grunt.loadNpmTasks('grunt-simple-mocha');
+// -- to --
+grunt.loadNpmTasks('grunt-mocha-hack');
+```
+
+----------------------
+
 If you're running tests that should actually be in a browser engine, try:
 [grunt-mocha](https://github.com/kmiyashiro/grunt-mocha).
 
