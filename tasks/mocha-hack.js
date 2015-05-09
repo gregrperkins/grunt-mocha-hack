@@ -36,6 +36,7 @@ module.exports = function(grunt) {
     var reporter = new mocha._reporter(runner);
     runner.ignoreLeaks = options.ignoreLeaks;
     runner.asyncOnly = options.asyncOnly;
+    runner.fullStackTrace = options.fullStackTrace;
     if (options.grep) runner.grep(options.grep, options.invert);
     if (options.globals) runner.globals(options.globals);
     if (options.growl) mocha._growl(runner, reporter);
